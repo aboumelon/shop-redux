@@ -3,9 +3,9 @@
 > A responsive e-commerce storefront implemented with React and TypeScript.
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React Router](https://img.shields.io/badge/React_Router-6-CA4245?logo=reactrouter&logoColor=white)](https://reactrouter.com/)
-[![Create React App](https://img.shields.io/badge/Create_React_App-4-09D3AC?logo=createreactapp&logoColor=white)](https://create-react-app.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React Router](https://img.shields.io/badge/React_Router-7-CA4245?logo=reactrouter&logoColor=white)](https://reactrouter.com/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
 
 MultiShop Storefront is a front-end e-commerce project that turns a static shop template into a reusable, component-based React application. It includes a complete landing page, product catalog, filtering controls, and individual product-detail routes.
 
@@ -22,27 +22,26 @@ MultiShop Storefront is a front-end e-commerce project that turns a static shop 
 
 ## Tech Stack
 
-| Area | Technologies |
-| --- | --- |
-| UI | React 18, TypeScript |
-| Routing | React Router 6 |
+| Area    | Technologies               |
+| ------- | -------------------------- |
+| UI      | React 18, TypeScript       |
+| Routing | React Router 7             |
 | Styling | Bootstrap, custom CSS/SCSS |
-| Tooling | Create React App, React Scripts |
-| Testing | React Testing Library, Jest DOM |
+| Tooling | Vite, ESLint, Prettier     |
 
 ## Pages
 
-| Route | Description |
-| --- | --- |
-| `/` | Storefront landing page with categories, offers, and featured products |
-| `/shop` | Product catalog and filtering interface |
-| `/shop/:id` | Individual product information and purchase controls |
+| Route       | Description                                                            |
+| ----------- | ---------------------------------------------------------------------- |
+| `/`         | Storefront landing page with categories, offers, and featured products |
+| `/shop`     | Product catalog and filtering interface                                |
+| `/shop/:id` | Individual product information and purchase controls                   |
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 16 or later
+- Node.js 22 LTS
 - npm 8 or later
 
 ### Installation
@@ -50,26 +49,28 @@ MultiShop Storefront is a front-end e-commerce project that turns a static shop 
 ```bash
 git clone https://github.com/aboumelon/shop-redux.git
 cd shop-redux
-npm install
-npm start
+npm ci
+npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+Open [http://localhost:5173](http://localhost:5173) to view the application.
 
 ## Available Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm start` | Run the development server |
-| `npm test` | Launch the test runner in watch mode |
-| `npm run build` | Create an optimized production build |
-| `npm run eject` | Expose the Create React App configuration (irreversible) |
+| Command                | Description                          |
+| ---------------------- | ------------------------------------ |
+| `npm run dev`          | Run the Vite development server      |
+| `npm run build`        | Create an optimized production build |
+| `npm run preview`      | Preview the production build locally |
+| `npm run typecheck`    | Run strict TypeScript checking       |
+| `npm run lint`         | Check the source with ESLint         |
+| `npm run format:check` | Check formatting with Prettier       |
+| `npm run format`       | Format supported files with Prettier |
 
 ## Project Structure
 
 ```text
 src/
-|-- assets/             # Product, category, vendor, and promotional images
 |-- components/         # Reusable storefront UI components
 |-- hooks/              # Shared interaction hooks
 |-- pages/
@@ -77,7 +78,7 @@ src/
 |   |-- shop/           # Catalog, filters, pagination, and product data
 |   `-- product-detail/ # Product detail route and data
 |-- App.tsx             # Application routes
-`-- index.tsx           # React entry point
+`-- main.tsx            # Vite/React entry point
 ```
 
 ## Current Scope

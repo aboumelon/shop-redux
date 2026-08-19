@@ -285,8 +285,8 @@ changes are:
 - **Routing/deployment:** `BrowserRouter` needs host fallback rules. Test direct deep
   links in preview now and configure the selected host in Phase 7.
 - **Large rename diff:** case/path changes can break imports on Linux and obscure
-  functional edits. Keep renames in a dedicated commit and verify with `git diff
-  --summary` plus typecheck.
+  functional edits. Keep renames in a dedicated commit and verify with a rename
+  summary plus typecheck.
 - **External API:** public services can fail or change. Phase 2 needs an approved
   provider, adapter boundary, deterministic fixtures, timeout/retry policy, and
   honest offline behavior.
@@ -304,8 +304,8 @@ merging the next phase.
 
 ## Proposed branch and commit structure
 
-- Phase 0 branch/current work: `docs/phase-0-audit`; commit `docs: add modernization
-  audit and phased plan`.
+- Phase 0 branch/current work: `docs/phase-0-audit`; commit
+  `docs: add modernization audit and phased plan`.
 - Phase 1: `phase/1-vite-tooling`, with focused commits for (1) baseline/Vite,
   (2) TypeScript/lint/format, (3) naming moves, and (4) proven asset/template cleanup.
 - Later branches: `phase/2-product-api`, `phase/3-catalog`, `phase/4-cart-wishlist`,
@@ -333,3 +333,59 @@ Approval to start Phase 1 should also confirm or defer these choices:
    fallback and base paths can be tested against its constraints.
 
 No Phase 1 implementation begins until this plan is approved.
+
+## Phase 1 implementation record
+
+Phase 1 was approved and implemented on branch
+`codex/phase-1-vite-modernization` on 2026-08-19.
+
+- Replaced the CRA entry document and bootstrap with Vite's root `index.html`,
+  `src/main.tsx`, `src/vite-env.d.ts`, and a React-enabled `vite.config.ts`.
+- Kept React 18 and upgraded React Router to 7. The route declarations for `/`,
+  `/shop`, and `/shop/:id` were not changed.
+- Added a Node 22 engine constraint and version files, strict modern TypeScript
+  project configurations, ESLint flat configuration, Prettier configuration, and
+  explicit development, preview, build, typecheck, lint, and formatting scripts.
+- Renamed `prouduct-info` to `product-info` and `multy-shop-icon`/`MultyShopIcon` to
+  `multi-shop-icon`/`MultiShopIcon`, updating every import and symbol reference.
+- Removed tracked `.idea` metadata, obsolete CRA entry/manifest/logo files and
+  dependencies, the standalone original `tamplate` tree, unreferenced Bootstrap
+  source/compiled variants, legacy JavaScript, and duplicate source images.
+- Retained `public/css/style.css`, the two CSS libraries linked by `index.html`, and
+  all 27 images referenced by rendered source. Before cleanup, repository-wide
+  searches accounted for HTML, TSX, CSS `url(...)`, and public-path references. The
+  retained public image set exactly matches the 27 image names referenced by source;
+  the removed payment image had no source, HTML, or CSS reference.
+- Retained Owl Carousel's `owl.video.play.png` because the retained carousel CSS
+  references it through a relative `url(...)`; a validation-pass filesystem check
+  confirms that every local URL in retained public CSS resolves to an existing file.
+- Updated README setup and tooling statements only where the completed migration
+  made the prior CRA instructions inaccurate; no later-phase feature is claimed.
+
+### Phase 1 local validation
+
+Local validation on 2026-08-19 used Node 22.23.2 and npm 10.9.8 with the standard
+`https://registry.npmjs.org/` registry. Registry access succeeded, the lockfile was
+regenerated from `package.json`, and a clean `npm ci` installed 201 packages. The
+regenerated lockfile contains no CRA, Webpack, CRA testing, or `web-vitals` package
+records. Regeneration refreshed compatible transitive React 18 types and packages
+within the manifest ranges and retained React Router 7.18.2; `npm audit` reports zero
+vulnerabilities. No force, legacy peer-dependency, OpenSSL, or automatic audit-fix
+workaround was used.
+
+The project-local `typecheck`, `lint`, `format:check`, and `build` scripts pass, as
+does `git diff --check`. One migration validation defect was fixed by replacing an
+expression-only optional callback invocation in `useOutsideHandler` with an explicit
+guard so the configured ESLint rules pass without suppression. Vite 7.3.6 starts on
+localhost. Direct HTTP requests to `/`, `/shop`, and `/shop/1` each return the Vite
+entry document with status 200, proving the development-server SPA fallback. Every
+retained public image loads, as do the retained custom CSS, animation CSS, Owl
+Carousel CSS and video icon. The referenced Google Fonts and Font Awesome
+stylesheets also returned status 200 during direct network checks.
+
+Actual browser inspection could not be completed because the in-app browser runtime
+reported no available browser backend. Desktop and mobile viewport rendering,
+client-side navigation and refresh behavior, browser-console output, and visual
+parity therefore remain unverified and are not claimed. Phase 1 does not yet satisfy
+every acceptance criterion despite all install, static, build, development-server,
+direct-route HTTP, and asset checks passing.
