@@ -387,3 +387,13 @@ navigation and browser refresh worked on each route, and the presentation was
 checked at representative desktop and mobile sizes. No important browser-console,
 network, asset-loading, or visual regression was observed. Phase 1 now satisfies
 all acceptance criteria.
+
+## Phase 2A evaluation status
+
+Phase 2A research and architecture evaluation was completed on 2026-08-19 without
+changing application source or dependencies. The evaluation recommends DummyJSON
+behind an application-owned domain adapter, with a small transparent local fallback
+and deterministic MSW-backed tests. Provider selection, the domain model, fallback
+policy, unsupported-control decisions, and RTK Query architecture require approval
+before Phase 2B begins. See
+[the complete Phase 2A evaluation](docs/phase-2-api-evaluation.md).
