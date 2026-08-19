@@ -374,18 +374,16 @@ vulnerabilities. No force, legacy peer-dependency, OpenSSL, or automatic audit-f
 workaround was used.
 
 The project-local `typecheck`, `lint`, `format:check`, and `build` scripts pass, as
-does `git diff --check`. One migration validation defect was fixed by replacing an
-expression-only optional callback invocation in `useOutsideHandler` with an explicit
-guard so the configured ESLint rules pass without suppression. Vite 7.3.6 starts on
-localhost. Direct HTTP requests to `/`, `/shop`, and `/shop/1` each return the Vite
-entry document with status 200, proving the development-server SPA fallback. Every
-retained public image loads, as do the retained custom CSS, animation CSS, Owl
+does `git diff --check`. `npm run build` completed successfully with Vite 7.3.6, and
+`npm run preview` started successfully. One migration validation defect was fixed by
+replacing an expression-only optional callback invocation in `useOutsideHandler`
+with an explicit guard so the configured ESLint rules pass without suppression.
+Every retained public image loads, as do the retained custom CSS, animation CSS, Owl
 Carousel CSS and video icon. The referenced Google Fonts and Font Awesome
 stylesheets also returned status 200 during direct network checks.
 
-Actual browser inspection could not be completed because the in-app browser runtime
-reported no available browser backend. Desktop and mobile viewport rendering,
-client-side navigation and refresh behavior, browser-console output, and visual
-parity therefore remain unverified and are not claimed. Phase 1 does not yet satisfy
-every acceptance criterion despite all install, static, build, development-server,
-direct-route HTTP, and asset checks passing.
+Manual local-browser validation covered `/`, `/shop`, and `/shop/1`. Direct
+navigation and browser refresh worked on each route, and the presentation was
+checked at representative desktop and mobile sizes. No important browser-console,
+network, asset-loading, or visual regression was observed. Phase 1 now satisfies
+all acceptance criteria.
