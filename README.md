@@ -69,15 +69,15 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ```text
 src/
-â”œâ”€â”€ assets/             # Product, category, vendor, and promotional images
-â”œâ”€â”€ components/         # Reusable storefront UI components
-â”œâ”€â”€ hooks/              # Shared interaction hooks
-â”œâ”€â”€ pages/
-â”‚   â”œâ”€â”€ home/           # Landing page and presentation data
-â”‚   â”œâ”€â”€ shop/           # Catalog, filters, pagination, and product data
-â”‚   â””â”€â”€ product-detail/ # Product detail route and data
-â”œâ”€â”€ App.tsx             # Application routes
-â””â”€â”€ index.tsx           # React entry point
+|-- assets/             # Product, category, vendor, and promotional images
+|-- components/         # Reusable storefront UI components
+|-- hooks/              # Shared interaction hooks
+|-- pages/
+|   |-- home/           # Landing page and presentation data
+|   |-- shop/           # Catalog, filters, pagination, and product data
+|   `-- product-detail/ # Product detail route and data
+|-- App.tsx             # Application routes
+`-- index.tsx           # React entry point
 ```
 
 ## Current Scope
@@ -91,7 +91,6 @@ This repository focuses on the storefront experience. Product data is currently 
 - Implement functional filtering, sorting, and search
 - Add authentication and order history
 - Expand automated component and route tests
-
 
 ## License
 
