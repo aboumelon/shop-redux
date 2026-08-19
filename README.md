@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# MultiShop Storefront
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A responsive e-commerce storefront implemented with React and TypeScript.
+
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React Router](https://img.shields.io/badge/React_Router-6-CA4245?logo=reactrouter&logoColor=white)](https://reactrouter.com/)
+[![Create React App](https://img.shields.io/badge/Create_React_App-4-09D3AC?logo=createreactapp&logoColor=white)](https://create-react-app.dev/)
+
+MultiShop Storefront is a front-end e-commerce project that turns a static shop template into a reusable, component-based React application. It includes a complete landing page, product catalog, filtering controls, and individual product-detail routes.
+
+## Features
+
+- Responsive e-commerce landing page
+- Reusable product, category, offer, and navigation components
+- Shop catalog with price, color, and size filter controls
+- Product detail pages with route parameters
+- Product image galleries and quantity controls
+- Featured-product and vendor carousels
+- Breadcrumb navigation and pagination UI
+- Strongly typed components and page data
+
+## Tech Stack
+
+| Area | Technologies |
+| --- | --- |
+| UI | React 18, TypeScript |
+| Routing | React Router 6 |
+| Styling | Bootstrap, custom CSS/SCSS |
+| Tooling | Create React App, React Scripts |
+| Testing | React Testing Library, Jest DOM |
+
+## Pages
+
+| Route | Description |
+| --- | --- |
+| `/` | Storefront landing page with categories, offers, and featured products |
+| `/shop` | Product catalog and filtering interface |
+| `/shop/:id` | Individual product information and purchase controls |
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 16 or later
+- npm 8 or later
+
+### Installation
+
+```bash
+git clone https://github.com/aboumelon/shop-redux.git
+cd shop-redux
+npm install
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Command | Description |
+| --- | --- |
+| `npm start` | Run the development server |
+| `npm test` | Launch the test runner in watch mode |
+| `npm run build` | Create an optimized production build |
+| `npm run eject` | Expose the Create React App configuration (irreversible) |
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```text
+src/
+â”œâ”€â”€ assets/             # Product, category, vendor, and promotional images
+â”œâ”€â”€ components/         # Reusable storefront UI components
+â”œâ”€â”€ hooks/              # Shared interaction hooks
+â”œâ”€â”€ pages/
+â”‚   â”œâ”€â”€ home/           # Landing page and presentation data
+â”‚   â”œâ”€â”€ shop/           # Catalog, filters, pagination, and product data
+â”‚   â””â”€â”€ product-detail/ # Product detail route and data
+â”œâ”€â”€ App.tsx             # Application routes
+â””â”€â”€ index.tsx           # React entry point
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Current Scope
 
-### `npm test`
+This repository focuses on the storefront experience. Product data is currently stored locally, and actions such as search, filtering, cart updates, checkout, and account management are represented at the UI level. A production version can connect these components to an API and a centralized state layer.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Potential Enhancements
 
-### `npm run build`
+- Connect the catalog to a REST or GraphQL API
+- Add persistent cart and checkout state
+- Implement functional filtering, sorting, and search
+- Add authentication and order history
+- Expand automated component and route tests
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is intended for portfolio and educational use.
